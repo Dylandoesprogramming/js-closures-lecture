@@ -1,0 +1,64 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+.center-align {
+   text-align: center;
+}
+code.keyword {
+   color: red;
+}
+section {
+   position: relative;
+   height: 100vh;
+   padding: 2em;
+   overflow: scroll;
+   background: #000 url('../assets/wood-background.jpg') no-repeat center center / cover;
+   font-family: 'Oswald', sans-serif;
+   font-size: 2em;
+   color: hsl(0, 0%, 30%);
+   text-shadow: #fff 1px 1px;
+}
+
+section .center {
+   height: calc(100vh - 200px);
+   display: flex;
+   align-items: center;
+}
+section h2 {
+   text-align: center;
+   font-family: 'Shrikhand', cursive;
+   color: #295266;
+   text-shadow: #fff 1px 1px;
+   font-size: 2em;
+}
+ul {
+   width: 90%;
+   margin: 0 auto;
+}
+pre {
+   width: 100%;
+   padding: 0 25px;
+   white-space: pre-wrap;
+   background: #000;
+   color: #ddd;
+   text-shadow: none;
+   font-family: 'Courier New', monospace;
+}
+.next-button-wrapper {
+   position: absolute;
+   bottom: 10px;
+   width: calc(100% - 4em);
+   text-align: center;
+}
+.next-button {
+   height: 40px;
+   width: 40px;
+   background: #295266;
+   color: #fff;
+   border: 1px solid #295266; 
+   border-radius: 50%;
+   font-size: 20px;
+}
+

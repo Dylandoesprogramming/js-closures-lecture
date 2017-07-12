@@ -1,24 +1,449 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+   <head>
+      <title>Closures</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Oswald|Crushed|Shrikhand" rel="stylesheet"> 
+      <link href="styles/style.css" rel="stylesheet">
+      <script defer src="scripts/script.js"></script>
+   </head>
+   <body>
+      <section>
+         <h2>JS Functions and Closures</h2>
+            <pre>
+               <code>
+function ohTheHorror() {
+   return function() {
+      return "Why, Brian, why?!!!"
+   }
+}
+               </code>
+            </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Assigning Context</small></h2>
+         <div class="center-align">Let's review the context of this:</div>
+         <pre>
+            <code>
+- Implicit
+- Explicit
+- new
+- window
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>The Keyword This</small></h2>
+         <h4 class="center-align"><small>Your Turn</small></h4>
+         <pre>
+            <code>
+// Given this function:
+function reverseName() {
+   return this.name.split("").reverse().join("")
+}
+// Make the function work with the window context and the context of a person object.
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2>Functions</h2>
+            <pre>
+               <code>
+function doSomething() {
+   console.log("I'm trying!")
+}
 
-<head>
-    <meta charset="utf-8">
-    <title>Jasmine Spec Runner v2.3.4</title>
+doSomething()
+               </code>
+            </pre>
+            <ul>
+               <li>Declarations</li>
+               <li>Invocations</li>
+               <li>Arguments and Params</li>
+               <li>Functions as Objects</li>
+            </ul>
+            <div class="next-button-wrapper">
+               <button class="next-button">&darr;</button>
+            </div>
+         </div>
+      </section>
+      <section>
+         <h2>Declarations vs. Expressions</h2>
+            <pre>
+               <code>
+function declareThis(param1, param2) {
 
-    <link rel="shortcut icon" type="image/png" href="test/lib/jasmine-2.3.4/jasmine_favicon.png">
-    <link rel="stylesheet" href="test/lib/jasmine-2.3.4/jasmine.css">
+}
 
-    <script src="test/lib/jasmine-2.3.4/jasmine.js"></script>
-    <script src="test/lib/jasmine-2.3.4/jasmine-html.js"></script>
-    <script src="test/lib/jasmine-2.3.4/boot.js"></script>
+var expressThis = function(param1, param2) {
 
-    <!-- include source files here... -->
-    <script src="closure-practice.js"></script>
+}
+               </code>
+            </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2>Hoisting</h2>
+            <pre>
+               <code>
+callMe()
 
-    <!-- include spec files here... -->
-    <script src="closure-practice.spec.js"></script>
+function callMe() {
+   // This function will still work
+}
+               </code>
+            </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2>Hoisting Failure</h2>
+            <pre>
+               <code>
+// This will throw an 'unexpected identifier' error.
+dontCallMeYet()
 
-</head>
+var dontCallMeYet = function() {
 
+}
+               </code>
+            </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2>Execution Context</h2>
+            <pre>
+               <code>
+var available;
 
-</html> 
+function whatIsMyContext() {
+   return '?'
+}
+
+whatIsMyContext()
+               </code>
+            </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2>Scope Chains</h2>
+            <pre>
+               <code>
+var windowVariable;
+function grandparentFunction() {
+   var grandparentVariable;
+
+   function parentFunction() {
+      var parentVariable;
+
+      function childFunction() {
+         var childVariable;
+      }
+   }
+}
+               </code>
+            </pre>
+         <div class="center-align">What variables can each function access?</div>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Garbage Collection</small></h2>
+            <pre>
+               <code>
+var windowVariable;
+function grandparentFunction() {
+   var grandparentVariable;
+
+   function parentFunction() {
+      var parentVariable;
+
+      function childFunction() {
+         var childVariable;
+      }
+   }
+}
+               </code>
+            </pre>
+         <div class="center-align">When is the memory for each variable freed up?</div>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Constructor Functions</small></h2>
+         <pre>
+            <code>
+function Car(make, model, year) {
+   this.make = make;
+   this.model = model;
+   this.year = year;
+}
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Constructor Functions</small></h2>
+         <h4 class="center-align"><small>Your Turn</small></h4>
+         <pre>
+            <code>
+// Write a constructor function to create a series of objects: cars, persons, countries, teams, etc.
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+
+      <section>
+         <h2>Prototypes</h2>
+         <pre>
+            <code>
+function Car() {}
+Car.prototype.makeNoise = function() {
+   return "Vroom"
+}
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Prototypes</small></h2>
+         <h4 class="center-align"><small>Your Turn</small></h4>
+         <pre>
+            <code>
+// Create a constructor and add a prototype method to alter the object or perform some task.
+
+// Then try monkey-patching, or adding a prototype method to an existing constructor, such as Array, Object, String, etc.
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+
+      <section>
+         <h2>Factories</h2>
+         <pre>
+            <code>
+function carMaker(make, model, year) {
+   return {
+      make: make,
+      model: model,
+      year: year
+   }
+}
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2>Factories</h2>
+         <h4 class="center-align"><small>Your Turn</small></h4>
+         <pre>
+            <code>
+// Write a factory function to return an object -- you know, like a robot whose intelligence surpasses our own and who will inevitably end up killing us all. 
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2>IIFEs</h2>
+         <h4 class="center-align">Immediately Invoked Function Expressions</h4>
+         <pre>
+            <code>
+(function() {
+   var num = 1;
+   num++;
+   console.log(num)
+})()
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2>IIFEs</h2>
+         <h4 class="center-align"><small>Your Turn</small></h4>
+         <pre>
+            <code>
+// Write an IIFE that runs some code automatically, like one that tells the user that their data has been locked until a ransom is paid -- just kidding, NSA, if you're listening.  
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+
+      <section>
+         <h2>Closures</h2>
+         <h4 class="center-align">Why the fuss?</h4>
+         <pre>
+            <code>
+function outer() {
+   var initialValue = 1;
+   function inner(num) {
+      return initialValue + num;
+   }
+
+   return inner;
+}
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Alternate Syntax</small></h2>
+         <pre>
+            <code>
+function outer() {
+   var initialValue = 1;
+   return function (num) {
+      return initialValue + num;
+   }
+}
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Function Creators</small></h2>
+         <pre>
+            <code>
+function customGreeter(name) {
+   return function(greeting) {
+      return greeting + ', ' + name;
+   }
+}
+
+var briansGreeter = customGreeter('brian')
+briansGreeter("Good morning")
+briansGreeter("Buenas tardes")
+briansGreeter("Wilkommen")
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Function Creators</small></h2>
+         <h4 class="center-align"><small>Your Turn</small></h4>
+         <pre>
+            <code>
+// Create a function creator to greet, call, harass, or annoy somebody.
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Scope Preservers</small></h2>
+         <pre>
+            <code>
+function createTeam(teamName) {
+   var team = {
+      name: teamName,
+      players: []
+   }
+
+   function createPlayer(playerName){
+      team.players.push(playerName)
+      return team
+   }
+
+   return createPlayer
+}            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Scope Preservers</small></h2>
+         <h4 class="center-align"><small>Your Turn</small></h4>
+         <pre>
+            <code>
+// Create a closure that creates a team, family, group, and returns a function to add members.
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Module Creators</small></h2>
+         <pre>
+            <code>
+function createUser(name) {
+   var name = name
+   var score = 0
+   
+   function getScore() {
+      return score
+   }
+   function updateScore(update) {
+      score += score
+      return score
+   }
+
+   return {
+      name: name,
+      getScore: getScore,
+      updateScore: updateScore
+   }
+}
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+      <section>
+         <h2><small>Module Creators</small></h2>
+         <h4 class="center-align"><small>Your Turn</small></h4>
+         <pre>
+            <code>
+// Create a module that creates a customer, client, user, or friend, and returns an object with methods that alter properties on the user.
+            </code>
+         </pre>
+         <div class="next-button-wrapper">
+            <button class="next-button">&darr;</button>
+         </div>
+      </section>
+
+   </body>
+</html>
